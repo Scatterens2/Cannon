@@ -92,3 +92,22 @@ function MarineBuy_GetEquipped()
     return equipped:GetList()
 
 end
+
+function MarineBuy_OnItemSelect(techId)
+
+    if techId == kTechId.Axe or techId == kTechId.Rifle or techId == kTechId.Shotgun or techId == kTechId.HeavyMachineGun or techId == kTechId.GrenadeLauncher or
+       techId == kTechId.Flamethrower or techId == kTechId.Welder or techId == kTechId.LayMines or techId == kTechId.Cannon then
+       
+        StartSoundEffect(kMarineBuyMenuSounds.SelectWeapon)
+        
+    elseif techId == kTechId.Jetpack then
+    
+        StartSoundEffect(kMarineBuyMenuSounds.SelectJetpack)
+
+    elseif techId == kTechId.Exosuit then
+    
+        StartSoundEffect(kMarineBuyMenuSounds.SelectExosuit)
+        
+    end
+
+end

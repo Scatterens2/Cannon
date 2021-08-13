@@ -20,7 +20,7 @@ GUIMarineBuyMenu.kPrototypeLabBackgroundTexture   = PrecacheAsset("ui/buymenu_ma
 GUIMarineBuyMenu.kButtonGroupFrame_Unlabeled_x2   = PrecacheAsset("ui/buymenu_marine/button_group_frame_unlabeled_x2.dds")
 GUIMarineBuyMenu.kButtonGroupFrame_Labeled_x3     = PrecacheAsset("ui/buymenu_marine/button_group_frame_labeled_x3.dds")
 GUIMarineBuyMenu.kButtonGroupFrame_Labeled_x4     = PrecacheAsset("ui/buymenu_marine/button_group_frame_labeled_x4.dds")
-GUIMarineBuyMenu.kButtonGroupFrame_Labeled_x1     = PrecacheAsset("ui/buymenu_marine/button_group_frame_labelled_x2.dds")
+GUIMarineBuyMenu.kButtonGroupFrame_Labeled_x1     = PrecacheAsset("ui/buymenu_marine/button_group_frame_labeled_x2.dds")
 
 GUIMarineBuyMenu.kButtonsTexture                  = PrecacheAsset("ui/buymenu_marine/buttons_16_slots.dds")
 GUIMarineBuyMenu.kButtonErrorFrame                = PrecacheAsset("ui/buymenu_marine/button_errorframe.dds")
@@ -130,18 +130,13 @@ local kWeaponGroupButtonPositions =
         Vector(4, 380, 0),
 
     },
+	[GUIMarineBuyMenu.kButtonGroupFrame_Labeled_x1] = 
+    {
+		Vector(4, 4, 0),
+    },
 
 }
 
-
-kWeaponGroupButtonPositions[GUIMarineBuyMenu.kButtonGroupFrame_Labeled_x1] = 
-
-	
-    {
-
-		Vector(4, 4, 0),
-
-    }
 
 
 
@@ -363,10 +358,10 @@ local kTechIdInfo =
         Description = "HMG_BUYDESCRIPTION",
         Stats = GetStatsForTechId(kTechId.HeavyMachineGun)
     }, 
-		[kTechId.Cannon] =  
+	[kTechId.Cannon] =  
 	{ 
-		ButtonTextureIndex = 15,
-		BigPictureIndex = 15,
+		ButtonTextureIndex = 11,
+		BigPictureIndex = 11,
 		Description = "A weapon suited to popping low armoured lifeforms",
 		Stats = GetStatsForTechId(kTechId.Cannon),
 	},
@@ -456,35 +451,30 @@ local kTechIdInfo =
 function GUIMarineBuyMenu:_GetPigPicturePixelCoordinatesForTechID(techId)
 
     -- NOTE(Salads): The texture file for purchase buttons have a column for "not hovered", and another for "hovered"
-	local pictureWidth = 651 
+    local pictureWidth = 651 -- armory dimensions
     local pictureHeight = 319
+    if self.hostStructure:isa("PrototypeLab") then
+        pictureWidth = 403
+        pictureHeight = 424
+    end
+
+    local index = kTechIdInfo[techId].BigPictureIndex
+    assert(index, "Could not find index for techid")
+
+    local x1 = 0
+											   
+    local x2 = x1 + pictureWidth
 	
-	local pictureWidth = 651 -- armory dimensions
-	local pictureHeight = 319
-	if self.hostStructure:isa("PrototypeLab") then
-		pictureWidth = 403
-		pictureHeight = 424
-	end
-	local index = kTechIdInfo[techId].BigPictureIndex
-	assert(index, "Could not find index for techid")
+    local y1 = pictureHeight * index
+    local y2 = y1 + pictureHeight
 
-	local x1 = 0
-	local x2 = x1 + pictureWidth
-
-	local y1 = pictureHeight * index
-	local y2 = y1 + pictureHeight
-
-	return { x1, y1, x2, y2 }
+    return { x1, y1, x2, y2 }
 	
 end
 
 function GUIMarineBuyMenu:_GetButtonPixelCoordinatesForTechID(techId, isHover)
 
     -- NOTE(Salads): The texture file for purchase buttons have a column for "not hovered", and another for "hovered"
-	local buttonIconWidth = 441
-    local buttonIconHeight = 114
-    local hoverAdd = isHover and buttonIconWidth or 0
-
 	local buttonIconWidth = 441
 	local buttonIconHeight = 114
 	local hoverAdd = isHover and buttonIconWidth or 0
@@ -829,7 +819,7 @@ function GUIMarineBuyMenu:CreateArmoryUI()
     extraweaponGroupBottomLeft:SetSizeFromTexture()
     extraweaponGroupBottomLeft:SetOptionFlag(GUIItem.CorrectScaling)
     self.background:AddChild(extraweaponGroupBottomLeft)
-    self:_InitializeWeaponGroup(extraweaponGroupBottomLeft, x1ButtonPositions,   { kTechId.Cannon  })
+    self:_InitializeWeaponGroup(extraweaponGroupBottomLeft, x1ButtonPositions,   {kTechId.Cannon}  )
 
     local x4LabelStartX = 335
 
@@ -1080,8 +1070,6 @@ function GUIMarineBuyMenu:_CreateRightSide(startPos)
     self.bigPicture:SetPosition(Vector(0, y, 0))
 	self.bigPicture:SetTexture(bigPicturesTexture)
 	local bigPictureCoords = self:_GetPigPicturePixelCoordinatesForTechID(kTechId.Pistol)
-   	self.bigPicture:SetTexture(self.bigPicturesTexture)
-	self.bigPicture:SetTexture(bigPicturesTexture)
 	self.bigPicture:SetSize(GUIGetSizeFromCoords(bigPictureCoords))
     self.bigPicture:SetTexturePixelCoordinates(GUIUnpackCoords(bigPictureCoords))
     self.bigPicture:SetOptionFlag(GUIItem.CorrectScaling)

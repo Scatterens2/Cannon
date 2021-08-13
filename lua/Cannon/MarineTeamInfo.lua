@@ -1,3 +1,8 @@
+
+--local kTrackedMarineGadgets = debug.getupvaluex(MarineTeamInfo.UpdateUserTrackers, "kTrackedMarineGadgets")
+--table.insert(kTrackedMarineGadgets, Cannon.kMapName)
+--networkVars[TeamInfo_GetUserTrackerNetvarName(Cannon.kMapName)] = string.format("integer (0 to %d)", kMaxPlayers - 1)
+
 local kTrackedMarineGadgets =
 {
     Pistol.kMapName,
@@ -37,7 +42,7 @@ do
 end
 
 
-local origUserTracker = MarineTeamInfo.UpdateUserTracker
+local origUserTracker = MarineTeamInfo.UpdateUserTrackers
 function MarineTeamInfo:UpdateUserTrackersUpdateUserTrackers()
 	Print("MarineTeamInfo")
 	origUserTracker(self)

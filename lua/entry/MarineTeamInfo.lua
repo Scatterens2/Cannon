@@ -11,7 +11,6 @@
 -- ========= For more information, visit us at http://www.unknownworlds.com ========================
 
 Script.Load("lua/TeamInfo.lua")
-Script.Load("lua/Cannon/TechtreeConstants.lua")
 
 class "MarineTeamInfo" (TeamInfo)
 
@@ -41,6 +40,7 @@ local kTrackedMarineGadgets =
     PulseGrenadeThrower.kMapName,
     LayMines.kMapName,
     Jetpack.kMapName,
+	Cannon.kMapName
 }
 
 local kTrackedExoLayouts = IterableDict()
@@ -66,7 +66,8 @@ function MarineTeamInfo:OnCreate()
     TeamInfo.OnCreate(self)
     
     self.numInfantryPortals = 0
-    
+    	Print("MarineTeamInfo")
+
 end
 
 if Client then
@@ -74,7 +75,8 @@ if Client then
     function MarineTeamInfo:OnInitialized()
         
         TeamInfo.OnInitialized(self)
-        
+        	Print("MarineTeamInfo")
+
         -- Notify GUI system when the marine team's infantry portal count changes.
         self:AddFieldWatcher("numInfantryPortals",
             function(self2)

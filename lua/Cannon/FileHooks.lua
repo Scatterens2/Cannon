@@ -16,6 +16,8 @@ ModLoader.SetupFileHook( "lua/UmbraMixin.lua", "lua/Cannon/UmbraMixin.lua", "pos
 ModLoader.SetupFileHook( "lua/PlayingTeam.lua", "lua/Cannon/PlayingTeam.lua", "post" )
 ModLoader.SetupFileHook( "lua/MarineTeam.lua", "lua/Cannon/MarineTeam.lua", "post" )
 ModLoader.SetupFileHook( "lua/TeamInfo.lua", "lua/Cannon/TeamInfo.lua", "post" )
+ModLoader.SetupFileHook( "lua/Weapons/Marine/ClipWeapon.lua", "lua/Cannon/ClipWeapon.lua", "post" )
+ModLoader.SetupFileHook( "lua/MarineTeamInfo.lua", "lua/Cannon/MarineTeamInfo.lua", "post" )
 
 
 ModLoader.SetupFileHook( "lua/Player_Client.lua", "lua/Cannon/Player.lua", "post" )
