@@ -8,8 +8,8 @@ function MarineTeam:InitTechTree()
     oldInitTechTree(self)
     
     
-	self.techTree:AddResearchNode(kTechId.CannonTech,           kTechId.PrototypeLab, kTechId.None)   
-	self.techTree:AddBuyNode(kTechId.Cannon,                    kTechId.AdvancedWeaponry, kTechId.None)    
+	--self.techTree:AddResearchNode(kTechId.CannonTech,           kTechId.PrototypeLab, kTechId.None)   
+	self.techTree:AddTargetedBuyNode(kTechId.Cannon,                    kTechId.AdvancedWeaponry, kTechId.None)    
     self.techTree:AddTargetedActivation(kTechId.DropCannon,    kTechId.AdvancedWeaponry, kTechId.None)
     
     

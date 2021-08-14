@@ -66,7 +66,6 @@ function MarineTeamInfo:OnCreate()
     TeamInfo.OnCreate(self)
     
     self.numInfantryPortals = 0
-    	Print("MarineTeamInfo")
 
 end
 

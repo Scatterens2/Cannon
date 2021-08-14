@@ -7,6 +7,6 @@ kCannonAoeDamage = 5
 kCannonSelfDamage = kCannonAoeDamage
 kCannonWeight = 0.25
 kCannonClipSize = 20
-kUmbraBulletModifier = 0.3
+kUmbraBulletModifier = 0.8
 kCannonPointValue = 15
 kCannonWeight = 0.18
