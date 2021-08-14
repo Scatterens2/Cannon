@@ -10,37 +10,33 @@ local kExtraWeaponGroupButtonPositions =
 } 
 
 
-local kTechIdInfo = 
-{ 
-		[kTechId.Cannon] = {
-			
-			ButtonTextureIndex = 15, 
-			BigPictureIndex = 12,
-			Description = "Sniper Rifle", 
-			Stats =
-					{
-						LifeFormDamage = 1,
-						StructureDamage = 1,
-						Range = 1,
-					}
-							}
-}
-
-
 local kTechIdInfo = debug.getupvaluex(GUIMarineBuyMenu._GetButtonPixelCoordinatesForTechID, "kTechIdInfo")
-kTechIdInfo[kTechId.Cannon].ButtonTextureIndex = 14
+Print("%s", ToString(kTechIdInfo))
+table.insert(kTechIdInfo, {kTechId.Cannon = {	ButtonTextureIndex = 15,
+												BigPictureIndex = 15, 
+												Description = "BLABLABLA",    
+												Stats = {   LifeFormDamage = 0.2,
+															StructureDamage = 0.8,
+															Range = 0.6,	
+														}
+							})
+Print("%s", ToString(kTechIdInfo))
+kTechIdInfo[kTechId.Cannon].ButtonTextureIndex
+
+--table.insert(kTechIdInfo , {[kTechId.Cannon].ButtonTextureIndex = 14} )
+
 
 --local _GetButtonPixelCoordinatesForTechID = debug.getupvaluex(GUIMarineBuyMenu._CreateButton, "_GetButtonPixelCoordinatesForTechID")
 local kTechIdInfo = debug.getupvaluex(GUIMarineBuyMenu._GetPigPicturePixelCoordinatesForTechID, "kTechIdInfo")
-kTechIdInfo[kTechId.Cannon].BigPictureIndex =12
+--kTechIdInfo[kTechId.Cannon].BigPictureIndex =12
 
 
 local kTechIdInfo = debug.getupvaluex(GUIMarineBuyMenu._SetDetailsSectionTechId, "kTechIdInfo")
-kTechIdInfo[kTechId.Cannon].Stats = {
-						LifeFormDamage = 1,
-						StructureDamage = 1,
-						Range = 1,
-					}
+--kTechIdInfo[kTechId.Cannon].Stats = {
+--						LifeFormDamage = 1,
+--						StructureDamage = 1,
+--						Range = 1,
+--					}
 
 function GUIMarineBuyMenu:CreateExtendedArmoryUI()
 	
@@ -48,7 +44,7 @@ function GUIMarineBuyMenu:CreateExtendedArmoryUI()
 	
 	local extraweaponGroupBottomLeft = self:CreateAnimatedGraphicItem()
     extraweaponGroupBottomLeft:SetIsScaling(false)
-    extraweaponGroupBottomLeft:SetPosition(Vector(105, 900 , 0))
+    extraweaponGroupBottomLeft:SetPosition(Vector(105, 780 , 0))
     extraweaponGroupBottomLeft:SetTexture(self.kButtonGroupFrame_Labeled_x1)
     extraweaponGroupBottomLeft:SetSizeFromTexture()
     extraweaponGroupBottomLeft:SetOptionFlag(GUIItem.CorrectScaling)
