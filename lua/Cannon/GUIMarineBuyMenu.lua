@@ -1,4 +1,3 @@
-
 GUIMarineBuyMenu.kButtonGroupFrame_Labeled_x1     = PrecacheAsset("ui/buymenu_marine/button_group_frame_labelled_x2.dds")
 
 local kExtraWeaponGroupButtonPositions = 
@@ -9,6 +8,7 @@ local kExtraWeaponGroupButtonPositions =
 		Vector(4, 4, 0),
     }
 } 
+
 local kTechIdInfo = debug.getupvaluex(GUIMarineBuyMenu._GetButtonPixelCoordinatesForTechID, "kTechIdInfo")
 kTechIdInfo[kTechId.Cannon].ButtonTextureIndex = 15
 
