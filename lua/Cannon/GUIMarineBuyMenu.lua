@@ -27,36 +27,45 @@ local kExtraTechIdInfo =
 }
 
 
-local kTechIdInfo = debug.getupvaluex(GUIMarineBuyMenu._GetButtonPixelCoordinatesForTechID, "kTechIdInfo")
-kExtraTechIdInfo[kTechId.Cannon].ButtonTextureIndex = 15
+local kExtraTechIdInfo = debug.getupvaluex(GUIMarineBuyMenu._GetButtonPixelCoordinatesForTechID, "kTechIdInfo")
+kExtraTechIdInfo[kTechId.Cannon].ButtonTextureIndex 
+
+--local _GetButtonPixelCoordinatesForTechID = debug.getupvaluex(GUIMarineBuyMenu._CreateButton, "_GetButtonPixelCoordinatesForTechID")
+local kExtraTechIdInfo = debug.getupvaluex(GUIMarineBuyMenu._GetPigPicturePixelCoordinatesForTechID, "kTechIdInfo")
+kExtraTechIdInfo[kTechId.Cannon].BigPictureIndex 
 
 
-local kTechIdInfo = debug.getupvaluex(GUIMarineBuyMenu._GetPigPicturePixelCoordinatesForTechID, "kTechIdInfo")
-kExtraTechIdInfo[kTechId.Cannon].BigPictureIndex = 12
+local kExtraTechIdInfo = debug.getupvaluex(GUIMarineBuyMenu._SetDetailsSectionTechId, "kTechIdInfo")
+kExtraTechIdInfo[kTechId.Cannon].Stats 
 
-local kTechIdInfo = debug.getupvaluex(GUIMarineBuyMenu._SetDetailsSectionTechId, "kTechIdInfo")
-kExtraTechIdInfo[kTechId.Cannon].Stats =
-    {
-        LifeFormDamage = 1,
-        StructureDamage = 1,
-        Range = 1,
-    }
-
-local oldCreateArmory = GUIMarineBuyMenu.CreateArmoryUI
-function GUIMarineBuyMenu:CreateArmoryUI()
+function GUIMarineBuyMenu:CreateExtendedArmoryUI()
 	
-	oldCreateArmory(self)
-
 	local x1ButtonPositions = kExtraWeaponGroupButtonPositions[self.kButtonGroupFrame_Labeled_x1]
 	
 	local extraweaponGroupBottomLeft = self:CreateAnimatedGraphicItem()
     extraweaponGroupBottomLeft:SetIsScaling(false)
-    extraweaponGroupBottomLeft:SetPosition(Vector(paddingX, weaponGroupBottomLeft:GetPosition().y + weaponGroupBottomLeft:GetSize().y , 0))
+    extraweaponGroupBottomLeft:SetPosition(Vector(105, 900 , 0))
     extraweaponGroupBottomLeft:SetTexture(self.kButtonGroupFrame_Labeled_x1)
     extraweaponGroupBottomLeft:SetSizeFromTexture()
     extraweaponGroupBottomLeft:SetOptionFlag(GUIItem.CorrectScaling)
     self.background:AddChild(extraweaponGroupBottomLeft)
     self:_InitializeWeaponGroup(extraweaponGroupBottomLeft, x1ButtonPositions,   { kTechId.Cannon  })
 
-	
+end
+
+function GUIMarineBuyMenu:SetHostStructure(hostStructure)
+
+    assert(hostStructure)
+
+    self.hostStructure = hostStructure
+
+    if self.hostStructure:isa("Armory") then
+        self:CreateArmoryUI()
+        self:CreateExtendedArmoryUI()
+    elseif self.hostStructure:isa("PrototypeLab") then
+        self:CreatePrototypeLabUI()
+    else
+        Log(string.format("ERROR: No generator found for class: %s", self.hostStructure:GetClassName()))
+    end
+    
 end
