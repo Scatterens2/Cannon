@@ -10,7 +10,7 @@ local kExtraWeaponGroupButtonPositions =
 } 
 
 
-local kExtraTechIdInfo = 
+local kTechIdInfo = 
 { 
 		[kTechId.Cannon] = {
 			
@@ -27,16 +27,20 @@ local kExtraTechIdInfo =
 }
 
 
-local kExtraTechIdInfo = debug.getupvaluex(GUIMarineBuyMenu._GetButtonPixelCoordinatesForTechID, "kTechIdInfo")
-kExtraTechIdInfo[kTechId.Cannon].ButtonTextureIndex 
+local kTechIdInfo = debug.getupvaluex(GUIMarineBuyMenu._GetButtonPixelCoordinatesForTechID, "kTechIdInfo")
+kTechIdInfo[kTechId.Cannon].ButtonTextureIndex = 14
 
 --local _GetButtonPixelCoordinatesForTechID = debug.getupvaluex(GUIMarineBuyMenu._CreateButton, "_GetButtonPixelCoordinatesForTechID")
-local kExtraTechIdInfo = debug.getupvaluex(GUIMarineBuyMenu._GetPigPicturePixelCoordinatesForTechID, "kTechIdInfo")
-kExtraTechIdInfo[kTechId.Cannon].BigPictureIndex 
+local kTechIdInfo = debug.getupvaluex(GUIMarineBuyMenu._GetPigPicturePixelCoordinatesForTechID, "kTechIdInfo")
+kTechIdInfo[kTechId.Cannon].BigPictureIndex =12
 
 
-local kExtraTechIdInfo = debug.getupvaluex(GUIMarineBuyMenu._SetDetailsSectionTechId, "kTechIdInfo")
-kExtraTechIdInfo[kTechId.Cannon].Stats 
+local kTechIdInfo = debug.getupvaluex(GUIMarineBuyMenu._SetDetailsSectionTechId, "kTechIdInfo")
+kTechIdInfo[kTechId.Cannon].Stats = {
+						LifeFormDamage = 1,
+						StructureDamage = 1,
+						Range = 1,
+					}
 
 function GUIMarineBuyMenu:CreateExtendedArmoryUI()
 	
