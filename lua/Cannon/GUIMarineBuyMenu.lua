@@ -9,11 +9,37 @@ local kExtraWeaponGroupButtonPositions =
 		Vector(4, 4, 0),
     }
 } 
+
+local kExtraTechIdInfo = 
+{ 
+		[kTechId.Cannon] = {
+			
+			ButtonTextureIndex = 15, 
+			BigPictureIndex = 12,
+			Description = "Sniper Rifle", 
+			Stats =
+					{
+						LifeFormDamage = 1,
+						StructureDamage = 1,
+						Range = 1,
+					}
+							}
+}
+
 local kTechIdInfo = debug.getupvaluex(GUIMarineBuyMenu._GetButtonPixelCoordinatesForTechID, "kTechIdInfo")
-kTechIdInfo[kTechId.Cannon].ButtonTextureIndex = 15
+kExtraTechIdInfo[kTechId.Cannon].ButtonTextureIndex = 15
+
 
 local kTechIdInfo = debug.getupvaluex(GUIMarineBuyMenu._GetPigPicturePixelCoordinatesForTechID, "kTechIdInfo")
-kTechIdInfo[kTechId.Cannon].BigPictureIndex = 12
+kExtraTechIdInfo[kTechId.Cannon].BigPictureIndex = 12
+
+local kTechIdInfo = debug.getupvaluex(GUIMarineBuyMenu._SetDetailsSectionTechId, "kTechIdInfo")
+kExtraTechIdInfo[kTechId.Cannon].Stats =
+    {
+        LifeFormDamage = 1,
+        StructureDamage = 1,
+        Range = 1,
+    }
 
 local oldCreateArmory = GUIMarineBuyMenu.CreateArmoryUI
 function GUIMarineBuyMenu:CreateArmoryUI()
