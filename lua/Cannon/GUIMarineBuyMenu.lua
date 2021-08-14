@@ -10,17 +10,22 @@ local kExtraWeaponGroupButtonPositions =
     }
 } 
 
+local kTechIdInfo2 = debug.getupvaluex(GUIMarineBuyMenu._GetButtonPixelCoordinatesForTechID, "kTechIdInfo")
+kTechIdInfo2[kTechId.Cannon].ButtonTextureIndex = 15       
 
-local _GetButtonPixelCoordinatesForTechID = debug.getupvaluex(GUIMarineBuyMenu._CreateButton, "_GetButtonPixelCoordinatesForTechID")
-local _GetButtonPixelCoordinatesForTechID = debug.getupvaluex(GUIMarineBuyMenu._UpdateBuyButtonAvailability, "_GetButtonPixelCoordinatesForTechID")
-local kTechIdInfo = debug.getupvaluex(GUIMarineBuyMenu._GetButtonPixelCoordinatesForTechID, "kTechIdInfo")
-kTechIdInfo[kTechId.Cannon].ButtonTextureIndex = 15	   
+local kTechIdInfo2 = debug.getupvaluex(GUIMarineBuyMenu._GetPigPicturePixelCoordinatesForTechID, "kTechIdInfo")
+kTechIdInfo2[kTechId.Cannon].BigPictureIndex = 12
 
-local _GetPigPicturePixelCoordinatesForTechID = debug.getupvaluex(GUIMarineBuyMenu._CreateRightSide, "_GetPigPicturePixelCoordinatesForTechID")
-local _GetPigPicturePixelCoordinatesForTechID = debug.getupvaluex(GUIMarineBuyMenu.CreateArmoryUI, "_GetPigPicturePixelCoordinatesForTechID")
-local _GetPigPicturePixelCoordinatesForTechID = debug.getupvaluex(GUIMarineBuyMenu._SetDetailsSectionTechId, "_GetPigPicturePixelCoordinatesForTechID")
-local kTechIdInfo = debug.getupvaluex(GUIMarineBuyMenu._GetPigPicturePixelCoordinatesForTechID, "kTechIdInfo")
-kTechIdInfo[kTechId.Cannon].BigPictureIndex = 12
+--local _GetButtonPixelCoordinatesForTechID = debug.getupvaluex(GUIMarineBuyMenu._CreateButton, "_GetButtonPixelCoordinatesForTechID")
+--local _GetButtonPixelCoordinatesForTechID = debug.getupvaluex(GUIMarineBuyMenu._UpdateBuyButtonAvailability, "_GetButtonPixelCoordinatesForTechID")
+--local kTechIdInfo = debug.getupvaluex(GUIMarineBuyMenu._GetButtonPixelCoordinatesForTechID, "kTechIdInfo")
+--kTechIdInfo[kTechId.Cannon].ButtonTextureIndex = 15	   
+
+--local _GetPigPicturePixelCoordinatesForTechID = debug.getupvaluex(GUIMarineBuyMenu._CreateRightSide, "_GetPigPicturePixelCoordinatesForTechID")
+--local _GetPigPicturePixelCoordinatesForTechID = debug.getupvaluex(GUIMarineBuyMenu.CreateArmoryUI, "_GetPigPicturePixelCoordinatesForTechID")
+--local _GetPigPicturePixelCoordinatesForTechID = debug.getupvaluex(GUIMarineBuyMenu._SetDetailsSectionTechId, "_GetPigPicturePixelCoordinatesForTechID")
+--local kTechIdInfo = debug.getupvaluex(GUIMarineBuyMenu._GetPigPicturePixelCoordinatesForTechID, "kTechIdInfo")
+--kTechIdInfo[kTechId.Cannon].BigPictureIndex = 12
 
 local oldCreateArmory = GUIMarineBuyMenu.CreateArmoryUI
 function GUIMarineBuyMenu:CreateArmoryUI()
