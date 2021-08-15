@@ -26,3 +26,4 @@ function Marine:GetPlayerStatusDesc()
     
     return status
 end
+

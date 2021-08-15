@@ -10,12 +10,12 @@ function BuildClassToGrid()
     
 end
 
-local loadChangelingBite = true
+local loadCannon = true
 local oldGetTexCoordsForTechId = GetTexCoordsForTechId
 function GetTexCoordsForTechId(techId)
-	if loadChangelingBite and gTechIdPosition then
+	if loadCannon and gTechIdPosition then
 		gTechIdPosition[kTechId.Cannon] = kDeathMessageIcon.Cannon
-		loadChangelingBite = false
+		loadCannon = false
 	end
 	return oldGetTexCoordsForTechId(techId)
 end

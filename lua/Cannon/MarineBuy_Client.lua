@@ -1,40 +1,16 @@
-local gWeaponDescription
+local oldMarineBuy_GetWeaponDescription = MarineBuy_GetWeaponDescription
 function MarineBuy_GetWeaponDescription(techId)
-
-    if not gWeaponDescription then
-    
-        gWeaponDescription = { }
-        gWeaponDescription[kTechId.Axe] = "WEAPON_DESC_AXE"
-        gWeaponDescription[kTechId.Pistol] = "WEAPON_DESC_PISTOL"
-        gWeaponDescription[kTechId.Rifle] = "WEAPON_DESC_RIFLE"
-        gWeaponDescription[kTechId.Shotgun] = "WEAPON_DESC_SHOTGUN"
-        gWeaponDescription[kTechId.Flamethrower] = "WEAPON_DESC_FLAMETHROWER"
-        gWeaponDescription[kTechId.GrenadeLauncher] = "WEAPON_DESC_GRENADELAUNCHER"
-        gWeaponDescription[kTechId.HeavyMachineGun] = "WEAPON_DESC_HMG"
-        gWeaponDescription[kTechId.Welder] = "WEAPON_DESC_WELDER"
-        gWeaponDescription[kTechId.LayMines] = "WEAPON_DESC_MINE"
-        gWeaponDescription[kTechId.ClusterGrenade] = "WEAPON_DESC_CLUSTER_GRENADE"
-        gWeaponDescription[kTechId.GasGrenade] = "WEAPON_DESC_GAS_GRENADE"
-        gWeaponDescription[kTechId.PulseGrenade] = "WEAPON_DESC_PULSE_GRENADE"
-        gWeaponDescription[kTechId.Jetpack] = "WEAPON_DESC_JETPACK"
-        gWeaponDescription[kTechId.DualMinigunExosuit] = "WEAPON_DESC_DUALMINIGUN_EXO"
-        gWeaponDescription[kTechId.DualRailgunExosuit] = "WEAPON_DESC_CLAWRAILGUN_EXO"
-        gWeaponDescription[kTechId.Cannon] = "CANNON DESCRIPTION"
-        
+    if techId ~= kTechId.Cannon then
+        return oldMarineBuy_GetWeaponDescription(techId)
     end
     
-    local description = gWeaponDescription[techId]
-    if not description then
-        description = ""
-    end
-
-    description = Locale.ResolveString(description)
+    local description = "The AI sentry gun targets and fires automatically upon any aliens in its line of sight. Requires a welder to build! Only one can be deployed at a time!"
 
     local techTree = GetTechTree()
-    local requieres = techTree:GetRequiresText(techId)
+    local requires = techTree:GetRequiresText(techId)
 
-    if requieres ~= "" then
-        description = string.format(Locale.ResolveString("WEAPON_DESC_REQUIREMENTS"), requieres:lower(), description)
+    if requires ~= "" then
+        description = string.format(Locale.ResolveString("WEAPON_DESC_REQUIREMENTS"), requires:lower(), description)
     end
 
     
@@ -92,22 +68,14 @@ function MarineBuy_GetEquipped()
     return equipped:GetList()
 
 end
-
+local oldOnItemSelect = MarineBuy_OnItemSelect
 function MarineBuy_OnItemSelect(techId)
-
-    if techId == kTechId.Axe or techId == kTechId.Rifle or techId == kTechId.Shotgun or techId == kTechId.HeavyMachineGun or techId == kTechId.GrenadeLauncher or
-       techId == kTechId.Flamethrower or techId == kTechId.Welder or techId == kTechId.LayMines or techId == kTechId.Cannon then
-       
-        StartSoundEffect(kMarineBuyMenuSounds.SelectWeapon)
-        
-    elseif techId == kTechId.Jetpack then
-    
-        StartSoundEffect(kMarineBuyMenuSounds.SelectJetpack)
-
-    elseif techId == kTechId.Exosuit then
-    
-        StartSoundEffect(kMarineBuyMenuSounds.SelectExosuit)
-        
-    end
+	
+	if techId == kTechId.Cannon then
+		StartSoundEffect(kMarineBuyMenuSounds.SelectWeapon)
+	end
+	
+    oldOnItemSelect(self, techId)
 
 end
+
