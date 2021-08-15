@@ -1,10 +1,3 @@
-//________________________________
-//
-//  NS2: Combat
-//    Copyright 2014 Faultline Games Ltd.
-//  and Unknown Worlds Entertainment Inc.
-//
-//________________________________
 
 Script.Load("lua/Weapons/Marine/ClipWeapon.lua")
 Script.Load("lua/PickupableWeaponMixin.lua")
@@ -150,17 +143,21 @@ function Cannon:GetHasSecondary(player)
     return false
 end
 
-
+function Cannon:GetCatalystSpeedBase()
+    return 1.5
+end
 
 function Cannon:OnReload(player)
 
     if self:CanReload() then
-    
-        self:TriggerEffects("reload_speed0")
-        self.reloading = true
-        
+		self.reloading = true
+	
+		if player and player:GetHasCatPackBoost()then
+			self:TriggerEffects("reload_speed1")
+		else
+			self:TriggerEffects("reload_speed0")
+		end
     end
-    
 end
 
 
@@ -272,5 +269,6 @@ if Server then
     end 
     
 end
+
 
 Shared.LinkClassToMap("Cannon", Cannon.kMapName, networkVars)

@@ -13,7 +13,6 @@ ModLoader.SetupFileHook( "lua/DamageEffects.lua", "lua/Cannon/DamageEffects.lua"
 ModLoader.SetupFileHook( "lua/HitSounds.lua", "lua/Cannon/HitSounds.lua", "post" )
 ModLoader.SetupFileHook( "lua/UmbraMixin.lua", "lua/Cannon/UmbraMixin.lua", "post" )
 
---ModLoader.SetupFileHook( "lua/PlayingTeam.lua", "lua/Cannon/PlayingTeam.lua", "post" )
 ModLoader.SetupFileHook( "lua/MarineTeam.lua", "lua/Cannon/MarineTeam.lua", "post" )
 ModLoader.SetupFileHook( "lua/TeamInfo.lua", "lua/Cannon/TeamInfo.lua", "post" )
 ModLoader.SetupFileHook( "lua/Weapons/Marine/ClipWeapon.lua", "lua/Cannon/ClipWeapon.lua", "post" )
@@ -29,5 +28,5 @@ ModLoader.SetupFileHook( "lua/GUIPickups.lua", "lua/Cannon/GUIPickups.lua", "pos
 ModLoader.SetupFileHook( "lua/MarineTechMap.lua", "lua/Cannon/MarineTechMap.lua", "post" )
 ModLoader.SetupFileHook( "lua/Scoreboard.lua", "lua/Cannon/Scoreboard.lua", "post" )
 ModLoader.SetupFileHook( "lua/Weapons/WeaponDisplayManager.lua", "lua/Cannon/WeaponDisplayManager.lua", "post" )
---ModLoader.SetupFileHook( "lua/MarineTeamInfo.lua", "lua/Cannon/MarineTeamInfo.lua", "post" )
+ModLoader.SetupFileHook( "lua/MarineTeamInfo.lua", "lua/Cannon/MarineTeamInfo.lua", "post" )
 ModLoader.SetupFileHook( "lua/GUIMarineBuyMenu.lua", "lua/Cannon/GUIMarineBuyMenu.lua", "post" )

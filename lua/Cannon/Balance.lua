@@ -1,11 +1,11 @@
 kCannonDropCost = 20
 kCannonTechResearchCost = 20
 kCannonCost = 20
-kCannonDamage = 25
-kCannonRateOfFire = 0.3
-kCannonAoeDamage = 5
+kCannonDamage = 35
+kCannonRateOfFire = 0.25
+kCannonAoeDamage = 0
 kCannonSelfDamage = kCannonAoeDamage
-kCannonWeight = 0.25
+kCannonWeight = 0.05
 kCannonClipSize = 20
 kUmbraBulletModifier = 0.8
 kCannonPointValue = 15
