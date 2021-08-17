@@ -50,8 +50,7 @@ function GUIMarineBuyMenu:CreateExtendedArmoryUI()
 end
 
 function GUIMarineBuyMenu:SetHostStructure(hostStructure)
-	
-	
+
     assert(hostStructure)
 
     self.hostStructure = hostStructure
