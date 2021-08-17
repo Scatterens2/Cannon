@@ -1,8 +1,11 @@
-local oldAdvancedArmoryGetItemList = AdvancedArmory.GetItemList
-function AdvancedArmory:GetItemList(forPlayer)
-    
-    local itemList = oldAdvancedArmoryGetItemList(self, forPlayer)
-    table.insert(itemList, kTechId.Cannon)
-    return itemList
+local oldArmoryGetItemList = Armory.GetItemList
+function Armory:GetItemList(forPlayer)
+        
+
+    local itemList = oldArmoryGetItemList(self, forPlayer)
+	if self:GetTechId() == kTechId.AdvancedArmory then
+		table.insert(itemList, kTechId.Cannon)
+    end
+	return itemList
     
 end

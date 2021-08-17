@@ -1,0 +1,9 @@
+<game>
+	<name>Cannon</name>
+	<description>Cannon mod</description>
+	<icon>icons/ns2_64x64.png</icon>
+	<server>lua/Server.lua</server>
+	<loading>lua/Loading.lua</loading>
+    <soundinfo>sound/Cannon.soundinfo</soundinfo>
+	<image>preview.jpb</image>
+</game>

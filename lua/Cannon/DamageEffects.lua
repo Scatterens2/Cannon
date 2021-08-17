@@ -1,3 +1,5 @@
+-- combined all effects into a single file.
+
 kCannonDamageEffects =
 {
  damage_decal =

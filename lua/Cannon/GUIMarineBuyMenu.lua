@@ -1,6 +1,13 @@
+--
+
 GUIMarineBuyMenu.kButtonGroupFrame_Labeled_x1     = PrecacheAsset("ui/buymenu_marine/button_group_frame_labeled_x2.dds")
 GUIMarineBuyMenu.kButtonsTexture                  = PrecacheAsset("ui/buymenu_marine/buttons_16_slots.dds")
 GUIMarineBuyMenu.kArmoryBigPicturesTexture        = PrecacheAsset("ui/buymenu_marine/armory_bigicons_1.dds")
+
+if kCombatVersion then
+
+
+end
 
 local kExtraWeaponGroupButtonPositions = 
 {	

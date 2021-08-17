@@ -1,3 +1,5 @@
+--Set up the networkvar so that GUIMarineBuyMenu can track the number of cannons.
+
 if Server then
 	local kTrackedMarineGadgets = debug.getupvaluex(MarineTeamInfo.UpdateUserTrackers, "kTrackedMarineGadgets")
 	table.insert(kTrackedMarineGadgets, Cannon.kMapName)

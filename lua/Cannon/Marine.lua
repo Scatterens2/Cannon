@@ -1,3 +1,4 @@
+--Really need to find another way to do this so that multiple weapon mods play nicely.
 
 function Marine:GetPlayerStatusDesc()
 

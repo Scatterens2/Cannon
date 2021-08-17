@@ -1,4 +1,4 @@
-
+--Currently not using this as Cannon is unlocked by Advanced Weaponry as the HMG is.
 TeamInfo.kRelevantTechIdsMarine =
 {
 
